@@ -60,11 +60,13 @@ public class TimelineActivity extends Activity {
 		lvTweets.setOnScrollListener(new EndlessScrollListener() {
 			@Override
 			public void onLoadMore(int page, int totalItemsCount) {
-				showTimelineTweetsWrapper(); 
+				if(maxID != null)
+					maxID = String.valueOf(Long.valueOf(maxID) - 1);
+				showTimelineTweets(); 
 			}
 		});
 
-		// Set a listener to be invoked when the list should be refreshed.
+//		// Set a listener to be invoked when the list should be refreshed.
 //		lvTweets.setOnRefreshListener(new OnRefreshListener() {
 //			@Override
 //			public void onRefresh() {
@@ -143,14 +145,6 @@ public class TimelineActivity extends Activity {
 
 
 	/**
-	 * Adjusts the maxID before calling the api.
-	 */
-	private void showTimelineTweetsWrapper() {	
-		maxID = String.valueOf(Long.valueOf(maxID) - 1);
-		showTimelineTweets();
-	}
-
-	/**
 	 * Calls the REST api to get home timeline tweets
 	 */
 	private void showTimelineTweets() {		
@@ -171,7 +165,7 @@ public class TimelineActivity extends Activity {
 				adapter.addAll(tweets);
 
 				 // Now we call onRefreshComplete to signify refresh has finished
-			//	lvTweets.onRefreshComplete();
+		//		lvTweets.onRefreshComplete();
 				//Log.d("DEBUG", jsonTweets.toString());
 			}
 
