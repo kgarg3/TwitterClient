@@ -64,6 +64,21 @@ public class TimelineActivity extends Activity {
 			}
 		});
 
+		// Set a listener to be invoked when the list should be refreshed.
+//		lvTweets.setOnRefreshListener(new OnRefreshListener() {
+//			@Override
+//			public void onRefresh() {
+//				// Your code to refresh the list contents
+//				// Make sure you call listView.onRefreshComplete()
+//				// once the loading is done. This can be done from here or any
+//				// place such as when the network request has completed successfully.
+//				adapter.clear();
+//				maxID = null;
+//				showTimelineTweets();
+//
+//			}
+//		});
+
 		getLoggedInUser();
 		showTimelineTweets();
 	}
@@ -155,6 +170,8 @@ public class TimelineActivity extends Activity {
 				}
 				adapter.addAll(tweets);
 
+				 // Now we call onRefreshComplete to signify refresh has finished
+			//	lvTweets.onRefreshComplete();
 				//Log.d("DEBUG", jsonTweets.toString());
 			}
 

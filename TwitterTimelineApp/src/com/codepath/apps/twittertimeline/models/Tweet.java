@@ -32,6 +32,10 @@ public class Tweet extends BaseModel {
     public boolean isRetweeted() {
         return getBoolean("retweeted");
     }
+    
+    public String getTimestamp() {
+    	return getString("created_at");
+    }
 
     public static Tweet fromJson(JSONObject jsonObject) {
         Tweet tweet = new Tweet();
