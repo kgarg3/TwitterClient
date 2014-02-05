@@ -4,14 +4,16 @@
     android:layout_height="match_parent"
     tools:context=".TimelineActivity" >
 
- <!--     <eu.erikw.PullToRefreshListView
+    <!--
+    <eu.erikw.PullToRefreshListView
         android:id="@+id/lvTweets"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" >
-    </eu.erikw.PullToRefreshListView> -->
-    
+    </eu.erikw.PullToRefreshListView>
+    -->
+
     <ListView
         android:id="@+id/lvTweets"
         android:layout_width="match_parent"
@@ -19,6 +21,5 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" >
     </ListView>
-    
 
 </RelativeLayout>
