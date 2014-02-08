@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.codepath.apps.twittertimeline.R;
@@ -22,6 +21,9 @@ import com.codepath.apps.twittertimeline.listener.EndlessScrollListener;
 import com.codepath.apps.twittertimeline.models.Tweet;
 import com.codepath.apps.twittertimeline.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
+
+import eu.erikw.PullToRefreshListView;
+import eu.erikw.PullToRefreshListView.OnRefreshListener;
 
 /**
  * Main activity where the user sees tweets from their timeline. 
@@ -36,7 +38,7 @@ public class TimelineActivity extends Activity {
 	public static final String PROFILE_IMG = "profileImage";
 	public static final String PROFILE_NAME = "profileName";
 
-	private ListView lvTweets;
+	private PullToRefreshListView lvTweets;
 	private TweetsAdapter adapter;
 
 	private User loggedInUser;
@@ -52,7 +54,7 @@ public class TimelineActivity extends Activity {
 		setContentView(R.layout.activity_timeline);
 
 		//set up list view 
-		lvTweets = (ListView) findViewById(R.id.lvTweets);
+		lvTweets = (PullToRefreshListView) findViewById(R.id.lvTweets);
 		adapter = new TweetsAdapter(this, new ArrayList<Tweet>());
 		lvTweets.setAdapter(adapter);
 
@@ -66,23 +68,23 @@ public class TimelineActivity extends Activity {
 			}
 		});
 
-		//		// Set a listener to be invoked when the list should be refreshed.
-		//		lvTweets.setOnRefreshListener(new OnRefreshListener() {
-		//			@Override
-		//			public void onRefresh() {
-		//				// Your code to refresh the list contents
-		//				// Make sure you call listView.onRefreshComplete()
-		//				// once the loading is done. This can be done from here or any
-		//				// place such as when the network request has completed successfully.
-		//				adapter.clear();
-		//				maxID = null;
-		//				showTimelineTweets();
-		//		
-		//		// Now we call onRefreshComplete to signify refresh has finished
-		//        lvTweets.onRefreshComplete();
-		//
-		//			}
-		//		});
+		// Set a listener to be invoked when the list should be refreshed.
+		lvTweets.setOnRefreshListener(new OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				// Your code to refresh the list contents
+				// Make sure you call listView.onRefreshComplete()
+				// once the loading is done. This can be done from here or any
+				// place such as when the network request has completed successfully.
+				adapter.clear();
+				maxID = null;
+				showTimelineTweets();
+
+				// Now we call onRefreshComplete to signify refresh has finished
+				lvTweets.onRefreshComplete();
+
+			}
+		});
 
 		getLoggedInUser();
 		showTimelineTweets();
