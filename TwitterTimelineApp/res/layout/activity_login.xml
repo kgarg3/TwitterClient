@@ -2,35 +2,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ccc" 
-    tools:context=".LoginActivity" >
+    android:background="#ffffff" 
+    android:paddingLeft="@dimen/activity_login_margin"
+    android:paddingRight="@dimen/activity_login_margin">
 
     <TextView
-        android:id="@+id/tvWelcome"
+        android:id="@+id/feedback_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp"
-        android:text="@string/tv_welcome" />
+        android:layout_alignLeft="@+id/why_not_email_body"
+        android:layout_alignRight="@+id/why_not_email_body"
+        android:layout_below="@+id/why_not_email_body"
+        android:layout_marginTop="10dp"
+        android:text="@string/feedback_label" />
 
     <TextView
-        android:id="@+id/tv_login2continue"
+        android:id="@+id/permission_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvWelcome"
+        android:layout_below="@+id/feedback_label"
         android:layout_centerHorizontal="true"
-        android:text="@string/tv_login2continue" />
+        android:layout_marginTop="10dp"
+        android:text="@string/permission_label"
+        android:textColor="#bbbbbb"
+        android:textSize="12sp" />
 
-    <ImageView
-        android:id="@+id/ivLoginWithTwitter"
+    <ImageButton
+        android:id="@+id/btnLinkedIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_login2continue"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnFacebook"
+        android:background="@null"
         android:contentDescription="@string/empty"
-        android:onClick="loginToRest"
-        android:src="@drawable/ic_login_twitter" />
+        android:src="@drawable/linkedin_connect" 
+        android:onClick="loginToRest"/>
+
+    <ImageButton
+        android:id="@+id/btnFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/highlight_preamble"
+        android:background="@null"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/facebook_connect" />
+
+    <TextView
+        android:id="@+id/why_not_email_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/why_not_email_title"
+        android:layout_centerHorizontal="true"
+        android:text="@string/why_not_email_body" />
+
+    <TextView
+        android:id="@+id/why_not_email_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/why_not_email_body"
+        android:layout_below="@+id/btnLinkedIn"
+        android:layout_marginTop="21dp"
+        android:text="@string/why_not_email_title"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/highlight_preamble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnFacebook"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/highlight_preamble"
+        android:textSize="12sp" />
 
 </RelativeLayout>

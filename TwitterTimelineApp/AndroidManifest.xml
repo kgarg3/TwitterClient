@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="13"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -26,7 +26,8 @@
 
         <activity
             android:name="com.codepath.apps.twittertimeline.activity.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/sign_in" 
+            android:theme="@style/Theme.HighlightCopy" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,11 +46,13 @@
         </activity>
         <activity
             android:name="com.codepath.apps.twittertimeline.activity.TimelineActivity"
-            android:label="@string/title_activity_timeline" >
+            android:label="@string/title_activity_timeline" 
+            android:theme="@style/Theme.HighlightCopy">
         </activity>
         <activity
             android:name="com.codepath.apps.twittertimeline.activity.ComposeActivity"
-            android:label="@string/title_activity_compose" >
+            android:label="@string/title_activity_compose" 
+            android:theme="@style/Theme.HighlightCopy">
         </activity>
     </application>
 

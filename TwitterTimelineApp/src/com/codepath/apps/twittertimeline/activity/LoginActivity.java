@@ -2,9 +2,11 @@ package com.codepath.apps.twittertimeline.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.twittertimeline.R;
@@ -17,6 +19,8 @@ public class LoginActivity extends OAuthLoginActivity<TwitterClient> {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		TextView tvFeedback = (TextView) findViewById(R.id.feedback_label);
+        tvFeedback.setText(Html.fromHtml(getString(R.string.feedback_label)));
 	}
 
 	// Inflate the menu; this adds items to the action bar if it is present.
