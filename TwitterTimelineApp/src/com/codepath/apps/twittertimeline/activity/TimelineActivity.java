@@ -1,14 +1,10 @@
 package com.codepath.apps.twittertimeline.activity;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,14 +12,8 @@ import android.widget.Toast;
 
 import com.codepath.apps.twittertimeline.R;
 import com.codepath.apps.twittertimeline.TwitterClientApp;
-import com.codepath.apps.twittertimeline.adapter.TweetsAdapter;
-import com.codepath.apps.twittertimeline.listener.EndlessScrollListener;
-import com.codepath.apps.twittertimeline.models.Tweet;
 import com.codepath.apps.twittertimeline.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
-
-import eu.erikw.PullToRefreshListView;
-import eu.erikw.PullToRefreshListView.OnRefreshListener;
 
 /**
  * Main activity where the user sees tweets from their timeline. 
@@ -31,63 +21,23 @@ import eu.erikw.PullToRefreshListView.OnRefreshListener;
  * @author gargka
  *
  */
-public class TimelineActivity extends Activity {
+public class TimelineActivity extends FragmentActivity {
 
 	private final int REQUEST_CODE = 10;
 	public static final String STATUS = "Status";
 	public static final String PROFILE_IMG = "profileImage";
 	public static final String PROFILE_NAME = "profileName";
 
-	private PullToRefreshListView lvTweets;
-	private TweetsAdapter adapter;
-
 	private User loggedInUser;
 
-	/**
-	 * Stores the lowest ID of the tweets received. On scrolling, tweets lesser than this ID are fetched. 
-	 */
-	private String maxID;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_timeline);
-
-		//set up list view 
-		lvTweets = (PullToRefreshListView) findViewById(R.id.lvTweets);
-		adapter = new TweetsAdapter(this, new ArrayList<Tweet>());
-		lvTweets.setAdapter(adapter);
-
-		//scrolling should load more tweets 
-		lvTweets.setOnScrollListener(new EndlessScrollListener() {
-			@Override
-			public void onLoadMore(int page, int totalItemsCount) {
-				if(maxID != null)
-					maxID = String.valueOf(Long.valueOf(maxID) - 1);
-				showTimelineTweets(); 
-			}
-		});
-
-		// Set a listener to be invoked when the list should be refreshed.
-		lvTweets.setOnRefreshListener(new OnRefreshListener() {
-			@Override
-			public void onRefresh() {
-				// Your code to refresh the list contents
-				// Make sure you call listView.onRefreshComplete()
-				// once the loading is done. This can be done from here or any
-				// place such as when the network request has completed successfully.
-				adapter.clear();
-				maxID = null;
-				showTimelineTweets();
-
-				// Now we call onRefreshComplete to signify refresh has finished
-				lvTweets.onRefreshComplete();
-
-			}
-		});
-
+		
 		getLoggedInUser();
-		showTimelineTweets();
 	}
 
 	@Override
@@ -124,9 +74,9 @@ public class TimelineActivity extends Activity {
 		if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {	
 			//clear out the adapter to reload the timeline from the top and set maxID to null, so 
 			//that all the tweets are returned. 
-			adapter.clear();
-			maxID = null;
-			showTimelineTweets();	
+//			tweetsListFragment.getAdapter().clear();
+//			maxID = null;
+//			showTimelineTweets();	
 		}
 	} 
 
@@ -135,41 +85,6 @@ public class TimelineActivity extends Activity {
 			@Override
 			public void onSuccess(JSONObject jsonUser) {
 				loggedInUser = User.fromJson(jsonUser);
-			}
-
-			@Override
-			public void onFailure(Throwable e, JSONObject obj){
-				Toast.makeText(TimelineActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show(); 
-
-				//log to debug
-				Log.d("DEBUG", obj.toString());
-				Log.d("DEBUG", e.getMessage());
-			}
-		});
-	}
-
-
-	/**
-	 * Calls the REST api to get home timeline tweets
-	 */
-	private void showTimelineTweets() {		
-		TwitterClientApp.getRestClient().getTwitterHomeTimeline(maxID, new JsonHttpResponseHandler() {
-			@Override
-			public void onSuccess(JSONArray jsonTweets) {
-				ArrayList<Tweet> tweets = Tweet.fromJson(jsonTweets);
-				if(tweets != null && tweets.size() > 0) {
-					ArrayList<Long> tweetIds = new ArrayList<Long>();
-					for(int i=0; i<tweets.size(); i++ ) {
-						tweetIds.add(tweets.get(i).getId());
-					}
-					//set maxID to the lowest tweet ID, so that the next time on scroll only tweets
-					//with ID lower than this will be returned. Tweets are always returned in 
-					//decreasing order of TS. 
-					maxID = Long.toString(Collections.min(tweetIds));
-				}
-				adapter.addAll(tweets);
-
-				//Log.d("DEBUG", jsonTweets.toString());
 			}
 
 			@Override
