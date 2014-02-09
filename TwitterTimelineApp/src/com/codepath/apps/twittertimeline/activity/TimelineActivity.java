@@ -30,6 +30,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 
 	private final int REQUEST_CODE = 10;
 	public static final String STATUS = "Status";
+	public static final String USER = "User";
 	public static final String PROFILE_IMG = "profileImage";
 	public static final String PROFILE_NAME = "profileName";
 	
@@ -79,6 +80,16 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	}
 
 	
+	/**
+	 * Called when user profile icon is clicked in the action bar.
+	 * @param mi
+	 */
+	public void viewUserProfile(MenuItem mi) {
+		Intent intent = new Intent(this, ProfileActivity.class);
+		intent.putExtra(USER, loggedInUser);
+		startActivity(intent);
+	}
+	
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -106,20 +117,6 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 		actionBar.selectTab(tabHome);
 	}
 
-	private void getLoggedInUser() {
-		TwitterClientApp.getRestClient().getLoggedInUser(new JsonHttpResponseHandler() {
-			@Override
-			public void onSuccess(JSONObject jsonUser) {
-				loggedInUser = User.fromJson(jsonUser);
-			}
-
-			@Override
-			public void onFailure(Throwable e, JSONObject obj){
-				Toast.makeText(TimelineActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show(); 
-			}
-		});
-	}
-
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 		android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -140,5 +137,19 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) { }
 
+
+	private void getLoggedInUser() {
+		TwitterClientApp.getRestClient().getLoggedInUser(new JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(JSONObject jsonUser) {
+				loggedInUser = User.fromJson(jsonUser);
+			}
+
+			@Override
+			public void onFailure(Throwable e, JSONObject obj){
+				Toast.makeText(TimelineActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show(); 
+			}
+		});
+	}
 
 }

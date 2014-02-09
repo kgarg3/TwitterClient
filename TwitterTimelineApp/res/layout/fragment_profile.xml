@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/rlUserProfileTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:contentDescription="@string/empty"
+            android:src="@android:drawable/screen_background_light_transparent" />
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/imgProfile"
+            android:text="@string/empty" />
+
+        <TextView
+            android:id="@+id/tvUserTagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tvUserName"
+            android:layout_below="@id/tvUserName"
+            android:layout_toRightOf="@+id/imgProfile"
+            android:text="@string/empty" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llUserProfileBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/rlUserProfileTop" >
+
+        <TextView
+            android:id="@+id/tvFollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/empty" />
+
+        <TextView
+            android:id="@+id/tvFollowers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/empty" />
+    </LinearLayout>
+
+</RelativeLayout>

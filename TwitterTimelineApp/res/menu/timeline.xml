@@ -6,6 +6,14 @@
         android:onClick="onComposeAction"
         android:showAsAction="always"
         android:title="@string/title_activity_compose"/>
+    
+    <item
+        android:id="@+id/user"
+        android:icon="@drawable/ic_user"
+        android:onClick="viewUserProfile"
+        android:showAsAction="always"
+        android:title="@string/title_activity_profile"/>
+    
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"

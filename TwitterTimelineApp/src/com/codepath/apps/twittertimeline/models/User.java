@@ -38,6 +38,10 @@ public class User extends BaseModel implements Serializable{
     public int getFollowersCount() {
         return getInt("followers_count");
     }
+    
+    public int getFollowingCount() {
+        return getInt("following");
+    }
 
     public int getFriendsCount() {
         return getInt("friends_count");

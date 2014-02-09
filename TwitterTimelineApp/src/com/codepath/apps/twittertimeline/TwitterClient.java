@@ -30,7 +30,8 @@ public class TwitterClient extends OAuthBaseClient {
 
 	public enum TimelineType {
 		HOME_TIMELINE,
-		MENTIONS_TIMELINE;
+		MENTIONS_TIMELINE, 
+		USERS_TIMELINE;
 	}
 	
 	public TwitterClient(Context context) {
@@ -42,6 +43,9 @@ public class TwitterClient extends OAuthBaseClient {
 		switch(type){
 		case MENTIONS_TIMELINE: 
 			url = getApiUrl("statuses/mentions_timeline.json");
+			break;
+		case USERS_TIMELINE:
+			url =  getApiUrl("statuses/user_timeline.json");
 			break;
 		case HOME_TIMELINE: //fallthrough 		
 		default:
