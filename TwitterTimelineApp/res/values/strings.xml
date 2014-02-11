@@ -23,6 +23,7 @@
     <!-- Timeline Activity -->
     <string name="title_activity_timeline">Timeline</string>
     <string name="title_activity_compose">Compose</string>
+    <string name="title_activity_search">Search</string>
     <string name="title_activity_profile">Profile</string>
     <string name="action_logout">Logout</string>
     <string name="tab_home">Home</string>
@@ -36,9 +37,9 @@
     <string name="title_activity_profile">ProfileActivity</string>
 
     <!-- Profile Fragment -->
-    <string name="user_follower">Follower</string>
+    <string name="user_follower">Followers</string>
     <string name="user_following">Following</string>
-    <string name="title_activity_tweet_details">TweetDetailsActivity</string>
+    <string name="title_activity_tweet_details">Tweet Details</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -11,6 +11,7 @@ import com.codepath.apps.twittertimeline.R;
 import com.codepath.apps.twittertimeline.fragment.ProfileFragment;
 import com.codepath.apps.twittertimeline.models.Tweet;
 import com.codepath.apps.twittertimeline.models.User;
+import com.codepath.apps.twittertimeline.util.Util;
 
 public class TweetDetailsActivity extends FragmentActivity {
 	
@@ -32,6 +33,9 @@ public class TweetDetailsActivity extends FragmentActivity {
 		
 		TextView tweetBody = (TextView) findViewById(R.id.tvTweetDetails);
 		tweetBody.setText(Html.fromHtml(tweet.getBody()));
+		
+		TextView tweetTimestamp = (TextView) findViewById(R.id.tvTweetTimestamp);
+		tweetTimestamp.setText(Util.getRelativeTS(this, tweet.getTimestamp()));
 	}
 
 	@Override

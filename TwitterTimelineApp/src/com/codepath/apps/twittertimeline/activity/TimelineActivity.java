@@ -90,6 +90,13 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 		startActivity(intent);
 	}
 
+	/**
+	 * Called when the search icon is clicked in the action bar
+	 * @param mi
+	 */
+	public void onSearchAction(MenuItem mi) {
+		
+	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -116,6 +123,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	private void setupNavigationTabs() {
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		Tab tabHome = actionBar.newTab().setText(R.string.tab_home).setIcon(R.drawable.ic_home)
 				.setTag(TAB_HOME_TIMELINE_TAG).setTabListener(this);

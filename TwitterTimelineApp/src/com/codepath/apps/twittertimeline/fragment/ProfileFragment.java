@@ -16,7 +16,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ProfileFragment extends Fragment {
 	private User user;
-	
+
 	public static ProfileFragment newInstance(User user) {
 		ProfileFragment profileFragment = new ProfileFragment();
 		Bundle args = new Bundle();
@@ -37,10 +37,10 @@ public class ProfileFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// Defines the xml file for the fragment
 		View view =  inflater.inflate(R.layout.fragment_profile, container, false);
-		
+
 		ImageView imgView = (ImageView) view.findViewById(R.id.imgProfile);
 		ImageLoader.getInstance().displayImage(user.getProfileImageUrl(), imgView);
-		
+
 		TextView nameView = (TextView) view.findViewById(R.id.tvUserName);
 		String formattedName = "<b>" + user.getName() + "</b>";
 		nameView.setText(Html.fromHtml(formattedName));
@@ -49,12 +49,14 @@ public class ProfileFragment extends Fragment {
 		taglineView.setText(Html.fromHtml(user.getTagline()));
 
 		TextView followingView = (TextView) view.findViewById(R.id.tvFollowing);
-		followingView.setText(user.getFollowingCount() + " " + getString(R.string.user_following));
+		followingView.setText(Html.fromHtml("<font color='#000000'><b>" + user.getFollowingCount() + "</font></b>" 
+				+ " " + getString(R.string.user_following)));
 
 		TextView followersView = (TextView) view.findViewById(R.id.tvFollowers);
-		followersView.setText(user.getFollowersCount() + " " + getString(R.string.user_follower));
-		
+		followersView.setText(Html.fromHtml("<font color='#000000'><b>" + user.getFollowersCount() + "</font></b>" 
+				+  " " + getString(R.string.user_follower)));
+
 		return view;
 	}
-	
+
 }
