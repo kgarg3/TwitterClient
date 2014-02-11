@@ -1,72 +1,84 @@
 package com.codepath.apps.twittertimeline.models;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-public class Tweet extends BaseModel {
-    /**
-	 * 
-	 */
+public class Tweet implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
 	private User user;
+	private String body;
+	private long id;
+	private boolean isFavorited; 
+	private boolean isRetweeted;
+	private String timestamp;
 
-    public User getUser() {
-        return user;
-    }
+	public User getUser() {
+		return user;
+	}
 
-    public String getBody() {
-        return getString("text");
-    }
+	public long getId() {
+		return id;
+	}
 
-    public long getId() {
-        return getLong("id");
-    }
+	public String getBody() {
+		return body;
+	}
 
-    public boolean isFavorited() {
-        return getBoolean("favorited");
-    }
 
-    public boolean isRetweeted() {
-        return getBoolean("retweeted");
-    }
-    
-    public String getTimestamp() {
-    	return getString("created_at");
-    }
+	public boolean isFavorited() {
+		return isFavorited;
+	}
 
-    public static Tweet fromJson(JSONObject jsonObject) {
-        Tweet tweet = new Tweet();
-        try {
-            tweet.jsonObject = jsonObject;
-            tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return tweet;
-    }
+	public boolean isRetweeted() {
+		return isRetweeted;
+	}
 
-    public static ArrayList<Tweet> fromJson(JSONArray jsonArray) {
-        ArrayList<Tweet> tweets = new ArrayList<Tweet>(jsonArray.length());
+	public String getTimestamp() {
+		return timestamp;
+	}
 
-        for (int i=0; i < jsonArray.length(); i++) {
-            JSONObject tweetJson = null;
-            try {
-                tweetJson = jsonArray.getJSONObject(i);
-            } catch (Exception e) {
-                e.printStackTrace();
-                continue;
-            }
+	// Decodes business json into business model object
+	public static Tweet fromJson(JSONObject jsonObject) {
+		Tweet tweet = new Tweet();
+		// Deserialize json into object fields
+		try {
+			tweet.id = Long.valueOf(jsonObject.getString("id"));
+			tweet.body = jsonObject.getString("text");
+			tweet.isFavorited = Boolean.valueOf(jsonObject.getString("favorited")); 	 
+			tweet.isRetweeted = Boolean.valueOf(jsonObject.getString("retweeted"));
+			tweet.timestamp = jsonObject.getString("created_at");
+			tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return tweet;
+	}
 
-            Tweet tweet = Tweet.fromJson(tweetJson);
-            if (tweet != null) {
-                tweets.add(tweet);
-            }
-        }
+	public static ArrayList<Tweet> fromJson(JSONArray jsonArray) {
+		ArrayList<Tweet> tweets = new ArrayList<Tweet>(jsonArray.length());
 
-        return tweets;
-    }
+		for (int i=0; i < jsonArray.length(); i++) {
+			JSONObject tweetJson = null;
+			try {
+				tweetJson = jsonArray.getJSONObject(i);
+			} catch (Exception e) {
+				e.printStackTrace();
+				continue;
+			}
+
+			Tweet tweet = Tweet.fromJson(tweetJson);
+			if (tweet != null) {
+				tweets.add(tweet);
+			}
+		}
+
+		return tweets;
+	}
 }
