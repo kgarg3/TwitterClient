@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.twittertimeline.R;
@@ -72,7 +74,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	 * Called when compose is clicked in the action bar.
 	 * @param mi
 	 */
-	public void onComposeAction(MenuItem mi) {
+	public void onComposeAction(View v) {
 		Intent intent = new Intent(this, ComposeActivity.class);
 		intent.putExtra(PROFILE_IMG, loggedInUser.getProfileImageUrl());
 		intent.putExtra(PROFILE_NAME, loggedInUser.getScreenName());
@@ -84,7 +86,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	 * Called when user profile icon is clicked in the action bar.
 	 * @param mi
 	 */
-	public void viewUserProfile(MenuItem mi) {
+	public void viewUserProfile(View v) {
 		Intent intent = new Intent(this, ProfileActivity.class);
 		intent.putExtra(USER, loggedInUser);
 		startActivity(intent);
@@ -94,7 +96,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	 * Called when the search icon is clicked in the action bar
 	 * @param mi
 	 */
-	public void onSearchAction(MenuItem mi) {
+	public void onSearchAction(View v) {
 		
 	}
 
@@ -122,9 +124,15 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 
 	private void setupNavigationTabs() {
 		ActionBar actionBar = getActionBar();
+		//setup the navigation tabs
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setDisplayHomeAsUpEnabled(true);
-
+		//add the custom flag to show custom layout AND also set the Home flag, else the tabs
+		//come on top of the action bar
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
+		actionBar.setCustomView(R.layout.action_bar_timeline_title);
+		//HACK: Make the icon transparent, else you get icon, user profile icon and title in that order 
+		actionBar.setIcon(android.R.color.transparent);
+		
 		Tab tabHome = actionBar.newTab().setText(R.string.tab_home).setIcon(R.drawable.ic_home)
 				.setTag(TAB_HOME_TIMELINE_TAG).setTabListener(this);
 
@@ -163,24 +171,30 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 			public void onSuccess(JSONObject jsonUser) {
 				loggedInUser = User.fromJson(jsonUser);
 
-				//misleading name but want to set the screen name in the action bar 
-				adjustActionBar();
+				setUserScreenNameInActionBar();
 			}
 
 			@Override
 			public void onFailure(Throwable e, JSONObject obj){
 				Toast.makeText(TimelineActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show(); 
+				
+				//since we cannot fetch the user, set the action bar's title to the activity title
+				ActionBar actionBar = getActionBar();
+				actionBar.setTitle(getTitle());
 			}
 		});
 	}
 
 	/**
-	 * 
+	 * Sets the user's screen name in the action bar title. 
 	 */
-	private void adjustActionBar() {
+	private void setUserScreenNameInActionBar() {
 		//set users' screen name in title bar
-		ActionBar actionBar = getActionBar();
-		actionBar.setTitle(loggedInUser.getScreenName());
+//		ActionBar actionBar = getActionBar();
+//		actionBar.setTitle(loggedInUser.getScreenName());
+		
+		TextView tvUserScreenName = (TextView) getActionBar().getCustomView().findViewById(R.id.tvActionBarUserScreenName);
+		tvUserScreenName.setText(loggedInUser.getScreenName());
 	}
 
 }

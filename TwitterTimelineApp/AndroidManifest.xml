@@ -55,15 +55,33 @@
         </activity>
         <activity
             android:name="com.codepath.apps.twittertimeline.activity.ComposeActivity"
-            android:label="@string/title_activity_compose" >
+            android:label="@string/title_activity_compose"
+            android:parentActivityName="com.codepath.apps.twittertimeline.activity.TimelineActivity" >
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codepath.apps.twittertimeline.activity.TimelineActivity" />
         </activity>
         <activity
             android:name="com.codepath.apps.twittertimeline.activity.ProfileActivity"
-            android:label="@string/title_activity_profile" >
+            android:label="@string/title_activity_profile"
+            android:parentActivityName="com.codepath.apps.twittertimeline.activity.TimelineActivity" >
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codepath.apps.twittertimeline.activity.TimelineActivity" />
         </activity>
         <activity
             android:name="com.codepath.apps.twittertimeline.activity.TweetDetailsActivity"
-            android:label="@string/title_activity_tweet_details" >
+            android:label="@string/title_activity_tweet_details"
+            android:parentActivityName="com.codepath.apps.twittertimeline.activity.TimelineActivity" >
+
+            <!-- Parent activity meta-data to support API level 7+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codepath.apps.twittertimeline.activity.TimelineActivity" />
         </activity>
     </application>
 

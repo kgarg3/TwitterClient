@@ -1,5 +1,6 @@
 package com.codepath.apps.twittertimeline.activity;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -36,6 +37,10 @@ public class TweetDetailsActivity extends FragmentActivity {
 		
 		TextView tweetTimestamp = (TextView) findViewById(R.id.tvTweetTimestamp);
 		tweetTimestamp.setText(Util.getRelativeTS(this, tweet.getTimestamp()));
+		
+		//set UP enabled 
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override

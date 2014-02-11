@@ -1,45 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_compose"
-        android:icon="@drawable/ic_compose"
-        android:onClick="onComposeAction"
-        android:showAsAction="always"
-        android:orderInCategory="20"
-        android:title="@string/title_activity_compose"/>
-    
-    <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_search"
-        android:onClick="onSearchAction"
-        android:showAsAction="always"
-        android:orderInCategory="20"
-        android:title="@string/title_activity_search"/>
-    
-    
- <!--     <item
-        android:id="@+id/user"
-        android:icon="@drawable/ic_user"
-        android:onClick="viewUserProfile"
-        android:showAsAction="ifRoom"
-        android:orderInCategory="20"
-        android:title="@string/title_activity_profile"/> -->
-    
-    <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"
-        android:showAsAction="ifRoom"
         android:orderInCategory="200"
+        android:showAsAction="ifRoom"
         android:title="@string/action_settings">
         <menu>
             <item
                 android:id="@+id/action_logout"
-                android:title="@string/action_logout"
-                android:onClick="logout">
+                android:onClick="logout"
+                android:title="@string/action_logout">
             </item>
         </menu>
     </item>
-    
-    
 
 </menu>

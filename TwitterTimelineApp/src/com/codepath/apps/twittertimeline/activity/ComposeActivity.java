@@ -2,6 +2,7 @@ package com.codepath.apps.twittertimeline.activity;
 
 import org.json.JSONObject;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,30 +31,30 @@ public class ComposeActivity extends Activity {
 	private ImageView ivProfileImage;
 	private TextView tvProfileName;
 	private Menu menu;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_compose);
-		
+
 		Intent intent = getIntent();
-		
+
 		//set up the views
 		ivProfileImage = (ImageView) findViewById(R.id.ivProfileImg);
 		ImageLoader.getInstance().displayImage(intent.getStringExtra(TimelineActivity.PROFILE_IMG), ivProfileImage);
-		
+
 		tvProfileName = (TextView) findViewById(R.id.tvProfileName);
 		tvProfileName.setText(intent.getStringExtra(TimelineActivity.PROFILE_NAME));
-		
+
 		etComposedTweet = (EditText) findViewById(R.id.etComposeTweet);
 		etComposedTweet.addTextChangedListener( new TextWatcher() {
-			
+
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) { }
-			
+
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-			
+
 			@Override
 			public void afterTextChanged(Editable s) {
 				//if the status has no text, then disable tweet else enable it.
@@ -61,6 +62,10 @@ public class ComposeActivity extends Activity {
 						etComposedTweet.getText().toString().length() > 0 ? true : false);
 			}
 		});
+
+		//set UP enabled 
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
@@ -72,22 +77,22 @@ public class ComposeActivity extends Activity {
 	}
 
 	public void onTweetAction(MenuItem mi) {
-		
+
 		//Post the tweet using the rest client
 		TwitterClientApp.getRestClient().postTweet(etComposedTweet.getText().toString(), new JsonHttpResponseHandler() {
-			
+
 			@Override
 			public void onSuccess(JSONObject jsonObj) {
 				Intent intent = new Intent();
 				setResult(TimelineActivity.RESULT_OK, intent); 
 				finish(); 
 			}
-			
+
 			@Override
 			public void onFailure(Throwable e, JSONObject obj){
 				Toast.makeText(ComposeActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 			}
 		});
-		
+
 	}
 }

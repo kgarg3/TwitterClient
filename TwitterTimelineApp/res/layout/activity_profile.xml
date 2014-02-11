@@ -8,25 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ProfileActivity" >
 
-   <!--  <fragment
-        android:id="@+id/fragmentProfile"
-        android:name="com.codepath.apps.twittertimeline.fragment.ProfileFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        tools:layout="@layout/fragment_profile" />
-          <fragment
-        android:id="@+id/fragmentTweets"
-        android:name="com.codepath.apps.twittertimeline.fragment.UserTimelineFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/flProfileView" 
-        tools:layout="@layout/fragment_tweets_list" />
-  -->
-
     <FrameLayout
         android:id="@+id/flProfileView"
         android:layout_width="wrap_content"
@@ -35,17 +16,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true" >
     </FrameLayout>
-    
+
     <FrameLayout
-        android:id="@+id/flUserTweetsView" 
+        android:id="@+id/flUserTweetsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true" 
         android:layout_below="@id/flProfileView"
         android:layout_marginTop="10dp" >
     </FrameLayout>
-    
-  
+
 </RelativeLayout>
