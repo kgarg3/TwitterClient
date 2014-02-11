@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -16,13 +16,76 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
+
     <style name="Theme.HighlightCopy" parent="@android:style/Theme.Holo">
-       <item name="android:actionBarStyle">@style/Theme.HighlightCopy.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Theme.HighlightCopy.ActionBar</item>
     </style>
 
     <style name="Theme.HighlightCopy.ActionBar" parent="@android:style/Widget.Holo.ActionBar">
-       <item name="android:background">#33b5fa</item>
+        <item name="android:background">#33b5fa</item>
+    </style>
+
+    <style name="Theme.Twittertheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Twittertheme</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Twittertheme</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Twittertheme</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Twittertheme</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Twittertheme</item>
+        <item name="android:actionButtonStyle">@style/ActionButton.Solid.Twittertheme</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_twittertheme</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Twittertheme</item>
+    </style>
+
+    <style name="ActionBar.Solid.Twittertheme" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid_twittertheme</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_twittertheme</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_twittertheme</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Twittertheme</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ActionButton.Solid.Twittertheme" parent="@android:style/Widget.Holo.Light.ActionButton">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">0dp</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Twittertheme" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_twittertheme</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Twittertheme</item>
+    </style>
+
+    <style name="PopupMenu.Twittertheme" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_twittertheme</item>
+    </style>
+
+    <style name="DropDownListView.Twittertheme" parent="@android:style/Widget.Holo.Light.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_twittertheme</item>
+    </style>
+
+    <style name="ActionBarTabStyle.Twittertheme" parent="@android:style/Widget.Holo.Light.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_twittertheme</item>
+    </style>
+
+    <style name="DropDownNav.Twittertheme" parent="@android:style/Widget.Holo.Light.Spinner">
+        <item name="android:background">@drawable/spinner_background_ab_twittertheme</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_twittertheme</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_twittertheme</item>
+    </style>
+
+    <style name="ProgressBar.Twittertheme" parent="@android:style/Widget.Holo.Light.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_twittertheme</item>
+    </style>
+
+    <style name="ActionButton.CloseMode.Twittertheme" parent="@android:style/Widget.Holo.Light.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_twittertheme</item>
+    </style>
+
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Twittertheme.Widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Twittertheme</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Twittertheme</item>
     </style>
 
 </resources>

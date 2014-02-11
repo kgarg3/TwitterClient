@@ -38,5 +38,7 @@
     <!-- Profile Fragment -->
     <string name="user_follower">Follower</string>
     <string name="user_following">Following</string>
+    <string name="title_activity_tweet_details">TweetDetailsActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

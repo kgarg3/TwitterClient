@@ -7,12 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.twittertimeline.R;
 import com.codepath.apps.twittertimeline.TwitterClientApp;
@@ -79,15 +79,13 @@ public class ComposeActivity extends Activity {
 			@Override
 			public void onSuccess(JSONObject jsonObj) {
 				Intent intent = new Intent();
-				intent.putExtra(TimelineActivity.STATUS, etComposedTweet.getText().toString());
 				setResult(TimelineActivity.RESULT_OK, intent); 
 				finish(); 
 			}
 			
 			@Override
 			public void onFailure(Throwable e, JSONObject obj){
-				Log.d("DEBUG", obj.toString());
-				Log.d("DEBUG", e.getMessage());
+				Toast.makeText(ComposeActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 			}
 		});
 		

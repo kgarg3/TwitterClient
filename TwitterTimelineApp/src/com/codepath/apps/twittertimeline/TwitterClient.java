@@ -1,5 +1,7 @@
 package com.codepath.apps.twittertimeline;
 
+import java.util.HashMap;
+
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.TwitterApi;
 
@@ -38,8 +40,12 @@ public class TwitterClient extends OAuthBaseClient {
 		super(context, REST_API_CLASS, REST_URL, REST_CONSUMER_KEY, REST_CONSUMER_SECRET, REST_CALLBACK_URL);
 	}
 
-	public void showTweets(String maxID, TimelineType type, AsyncHttpResponseHandler handler) {
+	public void showTweets(HashMap<String, Object> map, AsyncHttpResponseHandler handler) {
 		String url;
+		TimelineType type = (TimelineType)map.get("timeline_type");
+		String max_id = (String) map.get("max_id");
+		Long userID = (Long)map.get("user_id");
+		
 		switch(type){
 		case MENTIONS_TIMELINE: 
 			url = getApiUrl("statuses/mentions_timeline.json");
@@ -55,8 +61,12 @@ public class TwitterClient extends OAuthBaseClient {
 
 		RequestParams params = new RequestParams();
 		params.put("count", "25");
-		if(maxID != null) 
-			params.put("max_id", maxID);
+		
+		if(max_id != null) 
+			params.put("max_id", max_id);
+		
+		if(userID != null)
+			params.put("user_id", String.valueOf(userID));
 
 		client.get(url, params, handler);
 	}

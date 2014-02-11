@@ -2,6 +2,7 @@ package com.codepath.apps.twittertimeline.fragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,14 +26,19 @@ public abstract class TimelineFragment extends TweetsListFragment{
 	 * Stores the lowest ID of the tweets received. On scrolling, tweets lesser than this ID are fetched. 
 	 */
 	private String maxID;
-	
+
 	private TimelineType previousTimelineType = TimelineType.HOME_TIMELINE;
-	
-	
+
+	/**
+	 * map of parameters that are used to make the call
+	 */
+	protected HashMap<String, Object> map = new HashMap<String, Object>(); 
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		
+
 		//scrolling should load more tweets 
 		lvTweets.setOnScrollListener(new EndlessScrollListener() {
 			@Override
@@ -60,26 +66,31 @@ public abstract class TimelineFragment extends TweetsListFragment{
 
 			}
 		});
-		
+
 		return view;
 	}
+
+	/**
+	 * Add the params that should be sent with the REST call. 
+	 */
+	protected void addRequestParams() {
+		map.put("max_id", maxID);
+		map.put("timeline_type", getTimelineType());
+	}
 	
-	
-	
-	
+	/**
+	 * Set the type of timeline you want to see.. home timeline or mentions
+	 * @return Timeline type to view
+	 */
+	protected abstract TimelineType getTimelineType();
+
+
 	/**
 	 * Calls the REST api to get home timeline tweets
 	 */
 	private void showTweets() {		
-		
-		//Before showing the tweets, prepare the adapter in that either append to it if the tweets are from
-		//the same timeline type or clear it out otherwise. The latter is required when switching tabs. 
-		TimelineType currentTimelineType = getTimelineType(); 
-		if(previousTimelineType != currentTimelineType)
-			getAdapter().clear();	
-		previousTimelineType = currentTimelineType;
-			
-		TwitterClientApp.getRestClient().showTweets(maxID, currentTimelineType, new JsonHttpResponseHandler() {
+		prepareBeforeShowTweets();
+		TwitterClientApp.getRestClient().showTweets(map, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray jsonTweets) {
 				ArrayList<Tweet> tweets = Tweet.fromJson(jsonTweets);
@@ -93,7 +104,7 @@ public abstract class TimelineFragment extends TweetsListFragment{
 					//decreasing order of TS. 
 					maxID = Long.toString(Collections.min(tweetIds));
 				}
-				
+
 				//add tweets to adapter
 				getAdapter().addAll(tweets);
 			}
@@ -106,9 +117,17 @@ public abstract class TimelineFragment extends TweetsListFragment{
 	}
 
 	/**
-	 * Set the type of timeline you want to see.. home timeline or mentions
-	 * @return Timeline type to view
+	 * Before showing the tweets, prepare the adapter in that either append to it if the tweets are from
+	 * the same timeline type or clear it out otherwise. The latter is required when switching tabs or when 
+	 * viewing a specific users' tweets. 
 	 */
-	protected abstract TimelineType getTimelineType();
+	private void prepareBeforeShowTweets() {
+		TimelineType currentTimelineType = getTimelineType(); 
+		if(previousTimelineType != currentTimelineType)
+			getAdapter().clear();	
+		previousTimelineType = currentTimelineType;
 
+		addRequestParams();
+	}
+	
 }

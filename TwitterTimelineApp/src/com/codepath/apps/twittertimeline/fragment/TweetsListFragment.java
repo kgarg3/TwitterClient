@@ -23,18 +23,13 @@ public class TweetsListFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// Defines the xml file for the fragment
 		View view = inflater.inflate(R.layout.fragment_tweets_list, container, false);
+		
 		// Setup handles to view objects here
 		lvTweets = (PullToRefreshListView) view.findViewById(R.id.lvTweets);		
-		return view;
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-
-		//set your adapter once the activity is created.
 		adapter = new TweetsAdapter(getActivity(), new ArrayList<Tweet>());
 		lvTweets.setAdapter(adapter);
+		
+		return view;
 	}
 
 	public TweetsAdapter getAdapter() {

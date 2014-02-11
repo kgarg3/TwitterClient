@@ -10,39 +10,51 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.apps.twittertimeline.R;
-import com.codepath.apps.twittertimeline.activity.ProfileActivity;
+import com.codepath.apps.twittertimeline.activity.TimelineActivity;
 import com.codepath.apps.twittertimeline.models.User;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ProfileFragment extends Fragment {
+	private User user;
 	
+	public static ProfileFragment newInstance(User user) {
+		ProfileFragment profileFragment = new ProfileFragment();
+		Bundle args = new Bundle();
+		args.putSerializable(TimelineActivity.USER,user);
+		profileFragment.setArguments(args);
+		return profileFragment;
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		// Get back arguments
+		this.user = (User) getArguments().getSerializable(TimelineActivity.USER); 
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// Defines the xml file for the fragment
-		return inflater.inflate(R.layout.fragment_profile, container, false);		
+		View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+		
+		ImageView imgView = (ImageView) view.findViewById(R.id.imgProfile);
+		ImageLoader.getInstance().displayImage(user.getProfileImageUrl(), imgView);
+		
+		TextView nameView = (TextView) view.findViewById(R.id.tvUserName);
+		String formattedName = "<b>" + user.getName() + "</b>";
+		nameView.setText(Html.fromHtml(formattedName));
+
+		TextView taglineView = (TextView) view.findViewById(R.id.tvUserTagline);
+		taglineView.setText(Html.fromHtml(user.getTagline()));
+
+		TextView followingView = (TextView) view.findViewById(R.id.tvFollowing);
+		followingView.setText(user.getFollowingCount() + " " + getString(R.string.user_following));
+
+		TextView followersView = (TextView) view.findViewById(R.id.tvFollowers);
+		followersView.setText(user.getFollowersCount() + " " + getString(R.string.user_follower));
+		
+		return view;
 	}
 	
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		
-		User user = ((ProfileActivity)getActivity()).getUser();
-		
-		ImageView imageView = (ImageView) getActivity().findViewById(R.id.imgProfile);
-        ImageLoader.getInstance().displayImage(user.getProfileImageUrl(), imageView);
-        
-        TextView nameView = (TextView) getActivity().findViewById(R.id.tvUserName);
-        String formattedName = "<b>" + user.getName() + "</b>";
-        nameView.setText(Html.fromHtml(formattedName));
-
-        TextView taglineView = (TextView) getActivity().findViewById(R.id.tvUserTagline);
-        taglineView.setText(Html.fromHtml(user.getTagline()));
-        
-        TextView followingView = (TextView) getActivity().findViewById(R.id.tvFollowing);
-        followingView.setText(user.getFollowingCount() + " " + getString(R.string.user_following));
-        
-        TextView followersView = (TextView) getActivity().findViewById(R.id.tvFollowers);
-        followersView.setText(user.getFollowersCount() + " " + getString(R.string.user_follower));
-	}
-
 }
