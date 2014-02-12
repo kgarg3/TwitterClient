@@ -27,6 +27,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
  *
  */
 public class ComposeActivity extends FragmentActivity {
+	private int MAX_CHAR = 140;
 	private EditText etComposedTweet;
 	private Menu menu;
 
@@ -56,10 +57,16 @@ public class ComposeActivity extends FragmentActivity {
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
 			@Override
-			public void afterTextChanged(Editable s) {
-				//if the status has no text, then disable tweet else enable it.
-				menu.findItem(R.id.mi_tweet).setEnabled(
-						etComposedTweet.getText().toString().length() > 0 ? true : false);
+			public void afterTextChanged(Editable s) {				
+				int statusLength = etComposedTweet.getText().toString().length();
+				boolean enabled = (MAX_CHAR >= statusLength) & statusLength> 0; 
+				
+				//if the status has no text AND is more than max_char, then disable tweet else enable it.
+				menu.findItem(R.id.mi_tweet).setEnabled(enabled);	
+				
+				//set the chars remaining in the menu item.
+				menu.findItem(R.id.mi_char_remaining).setTitle(String.valueOf(MAX_CHAR - statusLength));
+				
 			}
 		});
 

@@ -35,8 +35,8 @@
     <string name="empty"></string>
     <string name="et_hint_update_status">Update Status</string>
     <string name="tv_profile_name">Profile Name</string>
-    <string name="title_activity_profile">ProfileActivity</string>
-
+    <string name="title_activity_profile">ProfileActivity</string>    <string name="max_char_count">140</string>
+    
     <!-- Profile Fragment -->
     <string name="user_follower">Followers</string>
     <string name="user_following">Following</string>

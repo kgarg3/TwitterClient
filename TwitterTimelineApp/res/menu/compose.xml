@@ -1,10 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/mi_char_remaining"
+        android:enabled="false"
+        android:showAsAction="ifRoom"
+        android:title="@string/max_char_count"/>
+    <item
         android:id="@+id/mi_tweet"
         android:enabled="false"
         android:onClick="onTweetAction"
-        android:showAsAction="always"
+        android:showAsAction="ifRoom"
         android:title="@string/action_tweet"/>
 
 </menu>

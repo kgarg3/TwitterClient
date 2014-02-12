@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvProfileFragmentUserName"
             android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
             android:text="@string/empty"
             android:textColor="#aaa"
             android:textSize="@dimen/small_font_size" />
@@ -65,7 +66,7 @@
             android:layout_marginLeft="@dimen/margin_5_dp"
             android:layout_marginTop="@dimen/margin_5_dp"
             android:text="@string/empty"
-            android:textSize="@dimen/medium_font_size" />
+            android:textSize="@dimen/small_font_size" />
 
         <TextView
             android:id="@+id/tvProfileFragmentUserFollowing"
@@ -74,7 +75,7 @@
             android:layout_marginLeft="@dimen/margin_15_dp"
             android:layout_marginTop="@dimen/margin_5_dp"
             android:text="@string/empty"
-            android:textSize="@dimen/medium_font_size" />
+            android:textSize="@dimen/small_font_size" />
 
         <TextView
             android:id="@+id/tvProfileFragmentUserFollowers"
@@ -83,7 +84,7 @@
             android:layout_marginLeft="@dimen/margin_15_dp"
             android:layout_marginTop="@dimen/margin_5_dp"
             android:text="@string/empty"
-            android:textSize="@dimen/medium_font_size" />
+            android:textSize="@dimen/small_font_size" />
     </LinearLayout>
 
 </RelativeLayout>
