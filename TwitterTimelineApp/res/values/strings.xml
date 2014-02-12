@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Timeline</string>
+    <string name="app_name">Twitter</string>
 
     <!-- Login activity -->
     <string name="login_label">Log in</string>
@@ -18,8 +18,7 @@
     ]]>
     </string>
     <string name="permission_label">We won\'t post things without your permission.</string>
-    <string name="sign_in">Sign in</string>
-
+    
     <!-- Timeline Activity -->
     <string name="title_activity_timeline">Timeline</string>
     <string name="title_activity_compose">Compose</string>
