@@ -10,39 +10,40 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:contentDescription="@string/empty"/>
+        android:contentDescription="@string/empty" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:orientation="vertical" >
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:layout_alignParentLeft="true"/>
-        
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true" />
+
         <TextView
             android:id="@+id/tvTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/tvName"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_alignBottom="@+id/tvName"
+            android:textColor="#bbb"
             android:textSize="@dimen/tvTimestamp_font_size" />
 
         <TextView
             android:id="@+id/tvBody"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/tvTimestamp"
-            android:textSize="14sp"/>
-
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tvName"
+            android:textSize="14sp" />
     </RelativeLayout>
 
 </LinearLayout>

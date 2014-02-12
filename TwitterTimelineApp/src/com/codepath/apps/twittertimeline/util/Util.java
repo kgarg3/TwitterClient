@@ -5,14 +5,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.content.Context;
 import android.text.format.DateUtils;
 
 
 public class Util {
 
+	/**
+	 * Returns the relative timestamp for the given string. 
+	 * @param activity
+	 * @param fullTimestamp
+	 * @return
+	 */
 	@SuppressLint("SimpleDateFormat")
-	public static String getRelativeTS(Activity activity, String fullTimestamp) {
+	public static String getRelativeTS(Context activity, String fullTimestamp) {
 		//Fri Mar 05 07:30:19 +0000 2010
 		SimpleDateFormat f = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy");
 		Date d;
@@ -29,11 +35,29 @@ public class Util {
 					// to default date instead of spans. This will not 
 					// display "3 weeks ago" but a full date instead
 					0).toString(); // Eventual flags
+			
 		} catch (ParseException e) {
 			e.printStackTrace();
 			return fullTimestamp;
 		}
 
+		return str;
+	}
+	
+	/**
+	 * Calculates the relative timestamp for the given string and returns the numeric value of the time 
+	 * along with the first char of the time length like 3h, 3m, 3d.
+	 * @param activity
+	 * @param fullTimestamp
+	 * @return
+	 */
+	public static String getRelativeTSForTimeline(Context activity, String fullTimestamp) {
+		String str = getRelativeTS(activity, fullTimestamp);
+		
+		//parse out only the number and the first char to get the time as 3h, 3m, 3d
+		String[] tokens = str.split(" ");
+		str = tokens[0] + tokens[1].charAt(0);
+		
 		return str;
 	}
 }

@@ -18,6 +18,7 @@ import com.codepath.apps.twittertimeline.activity.ProfileActivity;
 import com.codepath.apps.twittertimeline.activity.TimelineActivity;
 import com.codepath.apps.twittertimeline.activity.TweetDetailsActivity;
 import com.codepath.apps.twittertimeline.models.Tweet;
+import com.codepath.apps.twittertimeline.util.Util;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class TweetsAdapter extends ArrayAdapter<Tweet> {
@@ -57,16 +58,16 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 			}
 		});
         
-        TextView nameView = (TextView) view.findViewById(R.id.tvName);
+        TextView tvName = (TextView) view.findViewById(R.id.tvName);
         String formattedName = "<b>" + tweet.getUser().getName() + "</b>" + " <small><font color='#777777'>@" +
                 tweet.getUser().getScreenName() + "</font></small>";
-        nameView.setText(Html.fromHtml(formattedName));
+        tvName.setText(Html.fromHtml(formattedName));
 
-        TextView bodyView = (TextView) view.findViewById(R.id.tvBody);
-        bodyView.setText(Html.fromHtml(tweet.getBody()));
+        TextView tvBody = (TextView) view.findViewById(R.id.tvBody);
+        tvBody.setText(Html.fromHtml(tweet.getBody()));
         
-        TextView tsView = (TextView) view.findViewById(R.id.tvTimestamp);
-        tsView.setText(Html.fromHtml(tweet.getTimestamp()));
+        TextView tvTimestamp = (TextView) view.findViewById(R.id.tvTimestamp);
+        tvTimestamp.setText(Util.getRelativeTSForTimeline(getContext(), tweet.getTimestamp()));
         
         return view;
 	}
