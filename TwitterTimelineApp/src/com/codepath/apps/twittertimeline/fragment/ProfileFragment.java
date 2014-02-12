@@ -38,21 +38,21 @@ public class ProfileFragment extends Fragment {
 		// Defines the xml file for the fragment
 		View view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
-		ImageView imgView = (ImageView) view.findViewById(R.id.imgProfile);
+		ImageView imgView = (ImageView) view.findViewById(R.id.imgProfileFragmentUserImage);
 		ImageLoader.getInstance().displayImage(user.getProfileImageUrl(), imgView);
 
-		TextView nameView = (TextView) view.findViewById(R.id.tvUserName);
+		TextView nameView = (TextView) view.findViewById(R.id.tvProfileFragmentUserName);
 		String formattedName = "<b>" + user.getName() + "</b>";
 		nameView.setText(Html.fromHtml(formattedName));
 
-		TextView taglineView = (TextView) view.findViewById(R.id.tvUserTagline);
+		TextView taglineView = (TextView) view.findViewById(R.id.tvProfileFragmentUserTagline);
 		taglineView.setText(Html.fromHtml(user.getTagline()));
 
-		TextView followingView = (TextView) view.findViewById(R.id.tvFollowing);
+		TextView followingView = (TextView) view.findViewById(R.id.tvProfileFragmentUserFollowing);
 		followingView.setText(Html.fromHtml("<font color='#000000'><b>" + user.getFollowingCount() + "</font></b>" 
 				+ " " + getString(R.string.user_following)));
 
-		TextView followersView = (TextView) view.findViewById(R.id.tvFollowers);
+		TextView followersView = (TextView) view.findViewById(R.id.tvProfileFragmentUserFollowers);
 		followersView.setText(Html.fromHtml("<font color='#000000'><b>" + user.getFollowersCount() + "</font></b>" 
 				+  " " + getString(R.string.user_follower)));
 

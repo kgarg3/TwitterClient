@@ -29,13 +29,13 @@ public class TweetDetailsActivity extends FragmentActivity {
 		//pass in the user to the profile fragment
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ProfileFragment profileFragment = ProfileFragment.newInstance(user);
-		ft.replace(R.id.flTweetDetailsProfileView, profileFragment);
+		ft.replace(R.id.flTweetDetailsActivityProfileView, profileFragment);
 		ft.commit();
 		
-		TextView tweetBody = (TextView) findViewById(R.id.tvTweetDetails);
+		TextView tweetBody = (TextView) findViewById(R.id.tvTweetDetailsActivityTweetBody);
 		tweetBody.setText(Html.fromHtml(tweet.getBody()));
 		
-		TextView tweetTimestamp = (TextView) findViewById(R.id.tvTweetTimestamp);
+		TextView tweetTimestamp = (TextView) findViewById(R.id.tvTweetDetailsActivityTweetTimestamp);
 		tweetTimestamp.setText(Util.getRelativeTS(this, tweet.getTimestamp()));
 		
 		//set UP enabled 

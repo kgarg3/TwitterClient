@@ -27,8 +27,8 @@ public class TweetsListFragment extends Fragment{
 		View view = inflater.inflate(R.layout.fragment_tweets_list, container, false);
 		
 		// Setup handles to view objects here
-		progressBarLoadingTweets = (ProgressBar) view.findViewById(R.id.pgbarTweetsList);
-		lvTweets = (PullToRefreshListView) view.findViewById(R.id.lvTweets);	
+		progressBarLoadingTweets = (ProgressBar) view.findViewById(R.id.pgbarTweetsFragment);
+		lvTweets = (PullToRefreshListView) view.findViewById(R.id.lvTweetsFragmentTweetsList);	
 		adapter = new TweetsAdapter(getActivity(), new ArrayList<Tweet>());
 		lvTweets.setAdapter(adapter);
 		

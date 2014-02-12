@@ -26,10 +26,10 @@ public class ProfileActivity extends FragmentActivity {
 			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();		
 			//pass in the user to the profile fragment 
 			ProfileFragment profileFragment = ProfileFragment.newInstance(user);
-			ft.replace(R.id.flProfileView, profileFragment);
+			ft.replace(R.id.flProfileActivityUserProfileView, profileFragment);
 			//pass in the user to the usertimelinefragment to fetch the tweets for this particular user. 
 			UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance(user);
-			ft.replace(R.id.flUserTweetsView, userTimelineFragment);
+			ft.replace(R.id.flProfileActivityUserTweetsView, userTimelineFragment);
 			ft.commit();
 		}
 

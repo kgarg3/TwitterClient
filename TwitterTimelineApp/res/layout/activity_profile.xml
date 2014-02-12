@@ -9,7 +9,7 @@
     tools:context=".ProfileActivity" >
 
     <FrameLayout
-        android:id="@+id/flProfileView"
+        android:id="@+id/flProfileActivityUserProfileView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -18,13 +18,13 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/flUserTweetsView"
+        android:id="@+id/flProfileActivityUserTweetsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/flProfileView"
+        android:layout_below="@id/flProfileActivityUserProfileView"
         android:layout_marginTop="@dimen/margin_10_dp" >
     </FrameLayout>
 

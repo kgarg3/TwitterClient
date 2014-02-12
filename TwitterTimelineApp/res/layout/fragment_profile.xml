@@ -4,7 +4,7 @@
     android:layout_height="fill_parent" >
 
     <RelativeLayout
-        android:id="@+id/rlUserProfileTop"
+        android:id="@+id/rlProfileFragmentUserProfileDetailsTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true" >
 
         <ImageView
-            android:id="@+id/imgProfile"
+            android:id="@+id/imgProfileFragmentUserImage"
             android:layout_width="@dimen/img_width"
             android:layout_height="@dimen/img_width"
             android:layout_alignParentLeft="true"
@@ -21,37 +21,37 @@
             android:src="@android:drawable/screen_background_light_transparent" />
 
         <TextView
-            android:id="@+id/tvUserName"
+            android:id="@+id/tvProfileFragmentUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_10_dp"
             android:layout_marginTop="@dimen/margin_10_dp"
-            android:layout_toRightOf="@+id/imgProfile"
+            android:layout_toRightOf="@+id/imgProfileFragmentUserImage"
             android:text="@string/empty" />
 
         <TextView
-            android:id="@+id/tvUserTagline"
+            android:id="@+id/tvProfileFragmentUserTagline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/tvUserName"
-            android:layout_below="@id/tvUserName"
-            android:layout_toRightOf="@+id/imgProfile"
+            android:layout_alignLeft="@id/tvProfileFragmentUserName"
+            android:layout_below="@id/tvProfileFragmentUserName"
+            android:layout_toRightOf="@+id/imgProfileFragmentUserImage"
             android:text="@string/empty" 
             android:textSize="@dimen/small_font_size"
             android:textColor="#aaa"/>
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/llUserProfileBottom"
+        android:id="@+id/LLProfileFragmentUserProfileBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="@dimen/margin_10_dp"
-        android:layout_below="@+id/rlUserProfileTop" >
+        android:layout_below="@+id/rlProfileFragmentUserProfileDetailsTop" >
 
         <TextView
-            android:id="@+id/tvFollowing"
+            android:id="@+id/tvProfileFragmentUserFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin_10_dp"
@@ -60,7 +60,7 @@
             android:textSize="@dimen/medium_font_size" />
 
         <TextView
-            android:id="@+id/tvFollowers"
+            android:id="@+id/tvProfileFragmentUserFollowers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_5_dp"

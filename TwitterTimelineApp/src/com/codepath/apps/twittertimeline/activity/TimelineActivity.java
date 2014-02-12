@@ -113,7 +113,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 			// Commit your transactions here.
 			//when compose successful, show the users timeline with recent post.
 			android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-			transaction.replace(R.id.flTimeline, new HomeTimelineFragment());
+			transaction.replace(R.id.flTimelineActivityTweets, new HomeTimelineFragment());
 			transaction.commit();
 		}
 
@@ -148,10 +148,10 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 		android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
 		if(tab.getTag().equals(TAB_HOME_TIMELINE_TAG)) {			
-			transaction.replace(R.id.flTimeline, new HomeTimelineFragment());		
+			transaction.replace(R.id.flTimelineActivityTweets, new HomeTimelineFragment());		
 		}
 		else if(tab.getTag().equals(TAB_MENTIONS_TIMELINE_TAG)){
-			transaction.replace(R.id.flTimeline, new MentionsTimelineFragment());
+			transaction.replace(R.id.flTimelineActivityTweets, new MentionsTimelineFragment());
 		}
 
 		transaction.commit();
@@ -178,8 +178,8 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 				Toast.makeText(TimelineActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show(); 
 				
 				//since we cannot fetch the user, set the action bar's title to the activity title
-				ActionBar actionBar = getActionBar();
-				actionBar.setTitle(getTitle());
+				TextView tvUserScreenName = (TextView) getActionBar().getCustomView().findViewById(R.id.tvTimelineActionBarUserScreenName);
+				tvUserScreenName.setText(getTitle());
 			}
 		});
 	}
@@ -187,12 +187,8 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	/**
 	 * Sets the user's screen name in the action bar title. 
 	 */
-	private void setUserScreenNameInActionBar() {
-		//set users' screen name in title bar
-//		ActionBar actionBar = getActionBar();
-//		actionBar.setTitle(loggedInUser.getScreenName());
-		
-		TextView tvUserScreenName = (TextView) getActionBar().getCustomView().findViewById(R.id.tvActionBarUserScreenName);
+	private void setUserScreenNameInActionBar() {	
+		TextView tvUserScreenName = (TextView) getActionBar().getCustomView().findViewById(R.id.tvTimelineActionBarUserScreenName);
 		tvUserScreenName.setText(loggedInUser.getScreenName());
 	}
 

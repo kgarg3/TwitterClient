@@ -46,7 +46,7 @@ public class ComposeActivity extends FragmentActivity {
 			ft.commit();
 		}
 
-		etComposedTweet = (EditText) findViewById(R.id.etComposeTweet);
+		etComposedTweet = (EditText) findViewById(R.id.etComposeActivityStatus);
 		etComposedTweet.addTextChangedListener( new TextWatcher() {
 
 			@Override

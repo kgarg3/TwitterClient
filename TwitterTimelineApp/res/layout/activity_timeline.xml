@@ -5,7 +5,7 @@
     tools:context=".TimelineActivity" >
 
     <FrameLayout
-        android:id="@+id/flTimeline"
+        android:id="@+id/flTimelineActivityTweets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -5,7 +5,7 @@
     android:orientation="horizontal" >
 
     <ImageView
-        android:id="@+id/ivProfile"
+        android:id="@+id/ivTweetItemUserProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_10_dp"
@@ -21,28 +21,28 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/tvTweetItemUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true" />
 
         <TextView
-            android:id="@+id/tvTimestamp"
+            android:id="@+id/tvTweetItemTweetTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/margin_5_dp"
-            android:layout_alignBottom="@+id/tvName"
+            android:layout_alignBottom="@+id/tvTweetItemUserName"
             android:textColor="#bbb"
             android:textSize="@dimen/tvTimestamp_font_size" />
 
         <TextView
-            android:id="@+id/tvBody"
+            android:id="@+id/tvTweetItemTweetBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/tvName"
+            android:layout_below="@id/tvTweetItemUserName"
             android:textSize="@dimen/medium_font_size" />
     </RelativeLayout>
 

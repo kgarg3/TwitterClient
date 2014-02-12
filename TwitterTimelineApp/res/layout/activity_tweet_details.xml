@@ -10,7 +10,7 @@
     tools:context=".TweetDetailsActivity" >
 
      <FrameLayout
-        android:id="@+id/flTweetDetailsProfileView"
+        android:id="@+id/flTweetDetailsActivityProfileView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -19,22 +19,22 @@
     </FrameLayout>
 
      <TextView
-         android:id="@+id/tvTweetDetails"
+         android:id="@+id/tvTweetDetailsActivityTweetBody"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentLeft="true"
          android:layout_alignParentRight="true"
-         android:layout_below="@+id/flTweetDetailsProfileView"
+         android:layout_below="@+id/flTweetDetailsActivityProfileView"
          android:layout_marginTop="@dimen/margin_10_dp"
          android:text="@string/empty" />
 
      <TextView
-         android:id="@+id/tvTweetTimestamp"
+         android:id="@+id/tvTweetDetailsActivityTweetTimestamp"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_alignLeft="@+id/tvTweetDetails"
-         android:layout_alignRight="@+id/tvTweetDetails"
-         android:layout_below="@+id/tvTweetDetails"
+         android:layout_alignLeft="@+id/tvTweetDetailsActivityTweetBody"
+         android:layout_alignRight="@+id/tvTweetDetailsActivityTweetBody"
+         android:layout_below="@+id/tvTweetDetailsActivityTweetBody"
          android:layout_marginTop="@dimen/margin_10_dp"
          android:text="@string/empty" 
          android:textSize="@dimen/small_font_size"

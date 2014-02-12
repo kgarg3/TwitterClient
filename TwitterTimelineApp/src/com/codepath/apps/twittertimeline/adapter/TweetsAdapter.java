@@ -46,7 +46,7 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 			}
 		});
         
-        ImageView imageView = (ImageView) view.findViewById(R.id.ivProfile);
+        ImageView imageView = (ImageView) view.findViewById(R.id.ivTweetItemUserProfile);
         ImageLoader.getInstance().displayImage(tweet.getUser().getProfileImageUrl(), imageView);
         imageView.setOnClickListener( new OnClickListener() {
 			
@@ -58,15 +58,15 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 			}
 		});
         
-        TextView tvName = (TextView) view.findViewById(R.id.tvName);
+        TextView tvName = (TextView) view.findViewById(R.id.tvTweetItemUserName);
         String formattedName = "<b>" + tweet.getUser().getName() + "</b>" + " <small><font color='#777777'>@" +
                 tweet.getUser().getScreenName() + "</font></small>";
         tvName.setText(Html.fromHtml(formattedName));
 
-        TextView tvBody = (TextView) view.findViewById(R.id.tvBody);
+        TextView tvBody = (TextView) view.findViewById(R.id.tvTweetItemTweetBody);
         tvBody.setText(Html.fromHtml(tweet.getBody()));
         
-        TextView tvTimestamp = (TextView) view.findViewById(R.id.tvTimestamp);
+        TextView tvTimestamp = (TextView) view.findViewById(R.id.tvTweetItemTweetTimestamp);
         tvTimestamp.setText(Util.getRelativeTSForTimeline(getContext(), tweet.getTimestamp()));
         
         return view;
