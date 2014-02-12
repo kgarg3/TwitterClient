@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Html;
 import android.view.Menu;
 
 import com.codepath.apps.twittertimeline.R;
@@ -36,8 +35,7 @@ public class ProfileActivity extends FragmentActivity {
 		//set the title as the screen name and the UP enabled
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setTitle(Html.fromHtml(" <small><font color='#777777'>@" +
-				user.getScreenName() + "</font></small>"));
+		actionBar.setTitle(user.getScreenName());
 	}
 
 	@Override
