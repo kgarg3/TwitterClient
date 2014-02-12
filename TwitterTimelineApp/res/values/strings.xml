@@ -41,5 +41,8 @@
     <string name="user_following">Following</string>
     <string name="user_num_tweets">Tweets</string>
     <string name="title_activity_tweet_details">Tweet Details</string>
+    
+    <!-- Search View -->
+    <string name="search_hint">Search Tweet</string>
 
 </resources>

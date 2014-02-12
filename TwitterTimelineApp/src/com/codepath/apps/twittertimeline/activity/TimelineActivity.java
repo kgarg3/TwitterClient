@@ -4,12 +4,15 @@ import org.json.JSONObject;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +52,33 @@ public class TimelineActivity extends FragmentActivity /*implements TabListener*
 
 		setupNavigationTabs();
 		getLoggedInUser();
+		
+		
+		 // Associate searchable configuration with the SearchView
+	    SearchManager searchManager =
+	           (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+	    SearchView searchView = (SearchView) findViewById(R.id.svTimelineActionBarSearch);
+	    searchView.setSearchableInfo(
+	            searchManager.getSearchableInfo(getComponentName()));
+	    
+	    handleIntent(getIntent());
+
 	}
+	
+	@Override
+    protected void onNewIntent(Intent intent) {
+       
+		handleIntent(intent);
+    }
+
+	private void handleIntent(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            //use the query to search your data somehow
+        }
+    }
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,13 +128,6 @@ public class TimelineActivity extends FragmentActivity /*implements TabListener*
 		startActivity(intent);
 	}
 
-	/** TODO:
-	 * Called when the search icon is clicked in the action bar
-	 * @param mi
-	 */
-	public void onSearchAction(View v) {
-
-	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
