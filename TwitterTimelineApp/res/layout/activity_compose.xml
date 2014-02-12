@@ -28,7 +28,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
         android:hint="@string/et_hint_update_status" >
-        <requestFocus />
+
+        <requestFocus />
     </EditText>
 
 </RelativeLayout>

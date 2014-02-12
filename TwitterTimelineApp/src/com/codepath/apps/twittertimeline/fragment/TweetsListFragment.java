@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.codepath.apps.twittertimeline.R;
 import com.codepath.apps.twittertimeline.adapter.TweetsAdapter;
@@ -17,6 +18,7 @@ import eu.erikw.PullToRefreshListView;
 public class TweetsListFragment extends Fragment{
 
 	protected  PullToRefreshListView lvTweets;
+	protected ProgressBar progressBarLoadingTweets;
 	protected TweetsAdapter adapter;
 
 	@Override
@@ -25,7 +27,8 @@ public class TweetsListFragment extends Fragment{
 		View view = inflater.inflate(R.layout.fragment_tweets_list, container, false);
 		
 		// Setup handles to view objects here
-		lvTweets = (PullToRefreshListView) view.findViewById(R.id.lvTweets);		
+		progressBarLoadingTweets = (ProgressBar) view.findViewById(R.id.pgbarTweetsList);
+		lvTweets = (PullToRefreshListView) view.findViewById(R.id.lvTweets);	
 		adapter = new TweetsAdapter(getActivity(), new ArrayList<Tweet>());
 		lvTweets.setAdapter(adapter);
 		

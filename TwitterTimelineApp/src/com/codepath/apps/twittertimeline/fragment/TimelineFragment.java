@@ -90,6 +90,7 @@ public abstract class TimelineFragment extends TweetsListFragment{
 	 */
 	private void showTweets() {		
 		prepareBeforeShowTweets();
+		progressBarLoadingTweets.setVisibility(View.VISIBLE);
 		TwitterClientApp.getRestClient().showTweets(map, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray jsonTweets) {
@@ -107,6 +108,8 @@ public abstract class TimelineFragment extends TweetsListFragment{
 
 				//add tweets to adapter
 				getAdapter().addAll(tweets);
+				
+				progressBarLoadingTweets.setVisibility(View.INVISIBLE);
 			}
 
 			@Override
