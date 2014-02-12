@@ -13,7 +13,7 @@
         android:layout_alignLeft="@+id/why_not_email_body"
         android:layout_alignRight="@+id/why_not_email_body"
         android:layout_below="@+id/why_not_email_body"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin_10_dp"
         android:text="@string/feedback_label" />
 
     <TextView
@@ -22,10 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/feedback_label"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin_10_dp"
         android:text="@string/permission_label"
         android:textColor="#bbbbbb"
-        android:textSize="12sp" />
+        android:textSize="@dimen/small_font_size" />
 
     <ImageButton
         android:id="@+id/btnLinkedIn"
@@ -75,6 +75,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="14dp"
         android:text="@string/highlight_preamble"
-        android:textSize="12sp" />
+        android:textSize="@dimen/small_font_size" />
 
 </RelativeLayout>

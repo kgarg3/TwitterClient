@@ -25,8 +25,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/flComposeActivityProfileView"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="@dimen/margin_5_dp"
+        android:layout_marginTop="@dimen/margin_15_dp"
         android:hint="@string/et_hint_update_status" >
 
         <requestFocus />

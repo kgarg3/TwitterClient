@@ -8,16 +8,16 @@
         android:id="@+id/ivProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/margin_10_dp"
+        android:layout_marginTop="@dimen/margin_10_dp"
         android:contentDescription="@string/empty" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="@dimen/margin_5_dp"
+        android:layout_marginLeft="@dimen/margin_5_dp"
+        android:layout_marginTop="@dimen/margin_5_dp"
         android:orientation="vertical" >
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/margin_5_dp"
             android:layout_alignBottom="@+id/tvName"
             android:textColor="#bbb"
             android:textSize="@dimen/tvTimestamp_font_size" />
@@ -43,7 +43,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_below="@id/tvName"
-            android:textSize="14sp" />
+            android:textSize="@dimen/medium_font_size" />
     </RelativeLayout>
 
 </LinearLayout>

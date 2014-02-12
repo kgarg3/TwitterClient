@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/imgProfile"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/img_width"
+            android:layout_height="@dimen/img_width"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:contentDescription="@string/empty"
@@ -24,8 +24,8 @@
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/margin_10_dp"
+            android:layout_marginTop="@dimen/margin_10_dp"
             android:layout_toRightOf="@+id/imgProfile"
             android:text="@string/empty" />
 
@@ -37,7 +37,7 @@
             android:layout_below="@id/tvUserName"
             android:layout_toRightOf="@+id/imgProfile"
             android:text="@string/empty" 
-            android:textSize="12sp"
+            android:textSize="@dimen/small_font_size"
             android:textColor="#aaa"/>
     </RelativeLayout>
 
@@ -47,25 +47,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/margin_10_dp"
         android:layout_below="@+id/rlUserProfileTop" >
 
         <TextView
             android:id="@+id/tvFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginRight="@dimen/margin_10_dp"
+            android:layout_marginTop="@dimen/margin_5_dp"
             android:text="@string/empty"
-            android:textSize="14sp" />
+            android:textSize="@dimen/medium_font_size" />
 
         <TextView
             android:id="@+id/tvFollowers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/margin_5_dp"
             android:text="@string/empty"
-            android:textSize="14sp" />
+            android:textSize="@dimen/medium_font_size" />
     </LinearLayout>
 
 </RelativeLayout>

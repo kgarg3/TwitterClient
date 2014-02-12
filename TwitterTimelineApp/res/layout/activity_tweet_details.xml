@@ -25,7 +25,7 @@
          android:layout_alignParentLeft="true"
          android:layout_alignParentRight="true"
          android:layout_below="@+id/flTweetDetailsProfileView"
-         android:layout_marginTop="10dp"
+         android:layout_marginTop="@dimen/margin_10_dp"
          android:text="@string/empty" />
 
      <TextView
@@ -35,9 +35,9 @@
          android:layout_alignLeft="@+id/tvTweetDetails"
          android:layout_alignRight="@+id/tvTweetDetails"
          android:layout_below="@+id/tvTweetDetails"
-         android:layout_marginTop="10dp"
+         android:layout_marginTop="@dimen/margin_10_dp"
          android:text="@string/empty" 
-         android:textSize="12sp"
+         android:textSize="@dimen/small_font_size"
          android:textColor="#ccc"/>
 
 </RelativeLayout>
