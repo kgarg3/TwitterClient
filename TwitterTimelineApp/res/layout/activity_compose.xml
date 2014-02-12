@@ -8,35 +8,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ComposeActivity" >
 
-    <ImageView
-        android:id="@+id/ivProfileImg"
+    <FrameLayout
+        android:id="@+id/flComposeActivityProfileView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:contentDescription="@string/empty"
-        android:src="@null" />
-
-    <TextView
-        android:id="@+id/tvProfileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ivProfileImg"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/ivProfileImg"
-        android:layout_marginLeft="24dp"
-        android:layout_toRightOf="@+id/ivProfileImg"
-        android:text="@string/tv_profile_name" />
+        android:layout_alignParentTop="true" >
+    </FrameLayout>
 
     <EditText
         android:id="@+id/etComposeTweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ivProfileImg"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/ivProfileImg"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="@string/et_hint_update_status" />
+        android:layout_below="@+id/flComposeActivityProfileView"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/et_hint_update_status" >
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

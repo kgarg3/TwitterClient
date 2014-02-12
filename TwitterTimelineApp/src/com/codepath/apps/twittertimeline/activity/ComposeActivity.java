@@ -3,22 +3,22 @@ package com.codepath.apps.twittertimeline.activity;
 import org.json.JSONObject;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.twittertimeline.R;
 import com.codepath.apps.twittertimeline.TwitterClientApp;
+import com.codepath.apps.twittertimeline.fragment.ProfileFragment;
+import com.codepath.apps.twittertimeline.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Compose Activity to allow users to compose their tweets and update their statuses. 
@@ -26,10 +26,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
  * @author gargka
  *
  */
-public class ComposeActivity extends Activity {
+public class ComposeActivity extends FragmentActivity {
 	private EditText etComposedTweet;
-	private ImageView ivProfileImage;
-	private TextView tvProfileName;
 	private Menu menu;
 
 	@Override
@@ -37,14 +35,16 @@ public class ComposeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_compose);
 
-		Intent intent = getIntent();
+		//pass the user object to the underlying fragments 
+		User user = (User) getIntent().getSerializableExtra(TimelineActivity.USER);		
 
-		//set up the views
-		ivProfileImage = (ImageView) findViewById(R.id.ivProfileImg);
-		ImageLoader.getInstance().displayImage(intent.getStringExtra(TimelineActivity.PROFILE_IMG), ivProfileImage);
-
-		tvProfileName = (TextView) findViewById(R.id.tvProfileName);
-		tvProfileName.setText(intent.getStringExtra(TimelineActivity.PROFILE_NAME));
+		if (savedInstanceState == null) {
+			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();		
+			//pass in the user to the profile fragment 
+			ProfileFragment profileFragment = ProfileFragment.newInstance(user);
+			ft.replace(R.id.flComposeActivityProfileView, profileFragment);
+			ft.commit();
+		}
 
 		etComposedTweet = (EditText) findViewById(R.id.etComposeTweet);
 		etComposedTweet.addTextChangedListener( new TextWatcher() {

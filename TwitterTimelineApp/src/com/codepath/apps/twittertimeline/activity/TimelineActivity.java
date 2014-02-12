@@ -76,8 +76,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 	 */
 	public void onComposeAction(View v) {
 		Intent intent = new Intent(this, ComposeActivity.class);
-		intent.putExtra(PROFILE_IMG, loggedInUser.getProfileImageUrl());
-		intent.putExtra(PROFILE_NAME, loggedInUser.getScreenName());
+		intent.putExtra(USER, loggedInUser);
 		startActivityForResult(intent, REQUEST_CODE);
 	}
 
