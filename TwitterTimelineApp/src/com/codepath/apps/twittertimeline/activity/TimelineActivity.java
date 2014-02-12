@@ -4,8 +4,6 @@ import org.json.JSONObject;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -19,6 +17,7 @@ import com.codepath.apps.twittertimeline.R;
 import com.codepath.apps.twittertimeline.TwitterClientApp;
 import com.codepath.apps.twittertimeline.fragment.HomeTimelineFragment;
 import com.codepath.apps.twittertimeline.fragment.MentionsTimelineFragment;
+import com.codepath.apps.twittertimeline.listener.FragmentTabListener;
 import com.codepath.apps.twittertimeline.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -28,7 +27,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
  * @author gargka
  *
  */
-public class TimelineActivity extends FragmentActivity implements TabListener {
+public class TimelineActivity extends FragmentActivity /*implements TabListener*/ {
 
 	private final int REQUEST_CODE = 10;
 	public static final String STATUS = "Status";
@@ -68,14 +67,14 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 		Intent intent = new Intent(this, LoginActivity.class);
 		startActivity(intent);
 	}
-	
-	
+
+
 	/** TODO:
 	 * On clicking message, should show the users message 
 	 * @param item
 	 */
 	public void viewMessages(MenuItem item) {
-		
+
 	}
 
 
@@ -100,12 +99,12 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 		startActivity(intent);
 	}
 
-	/**
+	/** TODO:
 	 * Called when the search icon is clicked in the action bar
 	 * @param mi
 	 */
 	public void onSearchAction(View v) {
-		
+
 	}
 
 	@Override
@@ -140,37 +139,41 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 		actionBar.setCustomView(R.layout.action_bar_timeline_title);
 		//HACK: Make the icon transparent, else you get icon, user profile icon and title in that order 
 		actionBar.setIcon(android.R.color.transparent);
-		
+
 		Tab tabHome = actionBar.newTab().setText(R.string.tab_home).setIcon(R.drawable.ic_home)
-				.setTag(TAB_HOME_TIMELINE_TAG).setTabListener(this);
+				.setTag(TAB_HOME_TIMELINE_TAG).setTabListener(
+						new FragmentTabListener<HomeTimelineFragment>(R.id.flTimelineActivityTweets, this, 
+								TAB_HOME_TIMELINE_TAG, HomeTimelineFragment.class));
 
 		Tab tabMentions = actionBar.newTab().setText(R.string.tab_mentions).setIcon(R.drawable.ic_mentions)
-				.setTag(TAB_MENTIONS_TIMELINE_TAG).setTabListener(this);
+				.setTag(TAB_MENTIONS_TIMELINE_TAG).setTabListener(
+						new FragmentTabListener<MentionsTimelineFragment>(R.id.flTimelineActivityTweets, this, 
+								TAB_MENTIONS_TIMELINE_TAG, MentionsTimelineFragment.class));
 
 		actionBar.addTab(tabHome);
 		actionBar.addTab(tabMentions);
 		actionBar.selectTab(tabHome);
 	}
 
-	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-		if(tab.getTag().equals(TAB_HOME_TIMELINE_TAG)) {			
-			transaction.replace(R.id.flTimelineActivityTweets, new HomeTimelineFragment());		
-		}
-		else if(tab.getTag().equals(TAB_MENTIONS_TIMELINE_TAG)){
-			transaction.replace(R.id.flTimelineActivityTweets, new MentionsTimelineFragment());
-		}
-
-		transaction.commit();
-	}
-
-	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) { }
-
-	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) { }
+//	@Override
+//	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+//		android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//
+//		if(tab.getTag().equals(TAB_HOME_TIMELINE_TAG)) {			
+//			transaction.replace(R.id.flTimelineActivityTweets, new HomeTimelineFragment());		
+//		}
+//		else if(tab.getTag().equals(TAB_MENTIONS_TIMELINE_TAG)){
+//			transaction.replace(R.id.flTimelineActivityTweets, new MentionsTimelineFragment());
+//		}
+//
+//		transaction.commit();
+//	}
+//
+//	@Override
+//	public void onTabUnselected(Tab tab, FragmentTransaction ft) { }
+//
+//	@Override
+//	public void onTabReselected(Tab tab, FragmentTransaction ft) { }
 
 
 	private void getLoggedInUser() {
@@ -185,7 +188,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 			@Override
 			public void onFailure(Throwable e, JSONObject obj){
 				Toast.makeText(TimelineActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show(); 
-				
+
 				//since we cannot fetch the user, set the action bar's title to the activity title
 				TextView tvUserScreenName = (TextView) getActionBar().getCustomView().findViewById(R.id.tvTimelineActionBarUserScreenName);
 				tvUserScreenName.setText(getTitle());
