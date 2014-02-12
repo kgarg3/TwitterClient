@@ -12,11 +12,21 @@
         android:layout_alignParentTop="true" >
 
         <ImageView
-            android:id="@+id/imgProfileFragmentUserImage"
-            android:layout_width="@dimen/img_width"
-            android:layout_height="@dimen/img_width"
+            android:id="@+id/imgProfileFragmentUserBackgroundImage"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/img_height"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:contentDescription="@string/empty"
+            android:src="@android:drawable/screen_background_light_transparent" />
+
+        <ImageView
+            android:id="@+id/imgProfileFragmentUserImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imgProfileFragmentUserBackgroundImage"
+            android:layout_centerHorizontal="true"
             android:contentDescription="@string/empty"
             android:src="@android:drawable/screen_background_light_transparent" />
 
@@ -24,21 +34,19 @@
             android:id="@+id/tvProfileFragmentUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_10_dp"
-            android:layout_marginTop="@dimen/margin_10_dp"
-            android:layout_toRightOf="@+id/imgProfileFragmentUserImage"
+            android:layout_below="@+id/imgProfileFragmentUserImage"
+            android:layout_centerHorizontal="true"
             android:text="@string/empty" />
 
         <TextView
             android:id="@+id/tvProfileFragmentUserTagline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/tvProfileFragmentUserName"
-            android:layout_below="@id/tvProfileFragmentUserName"
-            android:layout_toRightOf="@+id/imgProfileFragmentUserImage"
-            android:text="@string/empty" 
-            android:textSize="@dimen/small_font_size"
-            android:textColor="#aaa"/>
+            android:layout_below="@+id/tvProfileFragmentUserName"
+            android:layout_centerHorizontal="true"
+            android:text="@string/empty"
+            android:textColor="#aaa"
+            android:textSize="@dimen/small_font_size" />
     </RelativeLayout>
 
     <LinearLayout
@@ -47,14 +55,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="@dimen/margin_10_dp"
-        android:layout_below="@+id/rlProfileFragmentUserProfileDetailsTop" >
+        android:layout_below="@+id/rlProfileFragmentUserProfileDetailsTop"
+        android:layout_marginLeft="@dimen/margin_10_dp" >
+
+        <TextView
+            android:id="@+id/tvProfileFragmentUserNumTweets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_5_dp"
+            android:layout_marginTop="@dimen/margin_5_dp"
+            android:text="@string/empty"
+            android:textSize="@dimen/medium_font_size" />
 
         <TextView
             android:id="@+id/tvProfileFragmentUserFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/margin_10_dp"
+            android:layout_marginLeft="@dimen/margin_15_dp"
             android:layout_marginTop="@dimen/margin_5_dp"
             android:text="@string/empty"
             android:textSize="@dimen/medium_font_size" />
@@ -63,6 +80,7 @@
             android:id="@+id/tvProfileFragmentUserFollowers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_15_dp"
             android:layout_marginTop="@dimen/margin_5_dp"
             android:text="@string/empty"
             android:textSize="@dimen/medium_font_size" />

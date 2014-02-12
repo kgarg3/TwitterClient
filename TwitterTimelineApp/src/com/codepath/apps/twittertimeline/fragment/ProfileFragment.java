@@ -37,6 +37,9 @@ public class ProfileFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// Defines the xml file for the fragment
 		View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+		
+		ImageView imgBckgrdView = (ImageView) view.findViewById(R.id.imgProfileFragmentUserBackgroundImage);
+		ImageLoader.getInstance().displayImage(user.getProfileBackgroundImageUrl(), imgBckgrdView);
 
 		ImageView imgView = (ImageView) view.findViewById(R.id.imgProfileFragmentUserImage);
 		ImageLoader.getInstance().displayImage(user.getProfileImageUrl(), imgView);
@@ -47,14 +50,18 @@ public class ProfileFragment extends Fragment {
 
 		TextView taglineView = (TextView) view.findViewById(R.id.tvProfileFragmentUserTagline);
 		taglineView.setText(Html.fromHtml(user.getTagline()));
+		
+		TextView numTweetsView = (TextView) view.findViewById(R.id.tvProfileFragmentUserNumTweets);
+		numTweetsView.setText(Html.fromHtml("<font color='#000000'><b>" + user.getNumTweets() + "</font></b>" 
+				+ "<br />" + getString(R.string.user_num_tweets)));
 
 		TextView followingView = (TextView) view.findViewById(R.id.tvProfileFragmentUserFollowing);
 		followingView.setText(Html.fromHtml("<font color='#000000'><b>" + user.getFollowingCount() + "</font></b>" 
-				+ " " + getString(R.string.user_following)));
+				+ "<br />" + getString(R.string.user_following)));
 
 		TextView followersView = (TextView) view.findViewById(R.id.tvProfileFragmentUserFollowers);
 		followersView.setText(Html.fromHtml("<font color='#000000'><b>" + user.getFollowersCount() + "</font></b>" 
-				+  " " + getString(R.string.user_follower)));
+				+  "<br />" + getString(R.string.user_follower)));
 
 		return view;
 	}

@@ -32,22 +32,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/btnFacebook"
         android:layout_below="@+id/btnFacebook"
         android:background="@null"
         android:contentDescription="@string/empty"
-        android:src="@drawable/linkedin_connect" 
-        android:onClick="loginToRest"/>
-
-    <ImageButton
-        android:id="@+id/btnFacebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/highlight_preamble"
-        android:background="@null"
-        android:contentDescription="@string/empty"
-        android:src="@drawable/facebook_connect" />
+        android:onClick="loginToRest"
+        android:src="@drawable/ic_login_twitter" />
 
     <TextView
         android:id="@+id/why_not_email_body"
@@ -76,5 +66,15 @@
         android:layout_marginTop="14dp"
         android:text="@string/highlight_preamble"
         android:textSize="@dimen/small_font_size" />
+
+    <ImageButton
+        android:id="@+id/btnFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/why_not_email_title"
+        android:layout_below="@+id/highlight_preamble"
+        android:background="@null"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/facebook_connect" />
 
 </RelativeLayout>

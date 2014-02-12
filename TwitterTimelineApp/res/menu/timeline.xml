@@ -1,6 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/action_message"
+        android:icon="@drawable/ic_action_message"
+        android:onClick="viewMessages"
+        android:orderInCategory="200"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_message"/>
+    <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"
         android:orderInCategory="200"

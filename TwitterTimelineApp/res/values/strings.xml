@@ -25,6 +25,7 @@
     <string name="title_activity_compose">Compose</string>
     <string name="title_activity_search">Search</string>
     <string name="title_activity_profile">Profile</string>
+    <string name="action_message">Profile</string>
     <string name="action_logout">Logout</string>
     <string name="tab_home">Home</string>
     <string name="tab_mentions">Mentions</string>
@@ -39,7 +40,7 @@
     <!-- Profile Fragment -->
     <string name="user_follower">Followers</string>
     <string name="user_following">Following</string>
+    <string name="user_num_tweets">Tweets</string>
     <string name="title_activity_tweet_details">Tweet Details</string>
-    <string name="hello_world">Hello world!</string>
 
 </resources>

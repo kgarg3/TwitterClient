@@ -68,6 +68,15 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 		Intent intent = new Intent(this, LoginActivity.class);
 		startActivity(intent);
 	}
+	
+	
+	/** TODO:
+	 * On clicking message, should show the users message 
+	 * @param item
+	 */
+	public void viewMessages(MenuItem item) {
+		
+	}
 
 
 	/**
