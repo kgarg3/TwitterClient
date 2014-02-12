@@ -38,7 +38,9 @@
             android:layout_alignLeft="@id/tvUserName"
             android:layout_below="@id/tvUserName"
             android:layout_toRightOf="@+id/imgProfile"
-            android:text="@string/empty" />
+            android:text="@string/empty" 
+            android:textSize="12sp"
+            android:textColor="#aaa"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -57,7 +59,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:text="@string/empty"
-            android:textColor="#ccc" />
+            android:textSize="14sp"
+            android:textColor="#aaa" />
 
         <TextView
             android:id="@+id/tvFollowers"
@@ -65,7 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@string/empty"
-            android:textColor="#ccc" />
+            android:textSize="14sp"
+            android:textColor="#aaa" />
     </LinearLayout>
 
 </RelativeLayout>
