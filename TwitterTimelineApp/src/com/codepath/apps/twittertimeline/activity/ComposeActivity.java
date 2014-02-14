@@ -59,7 +59,7 @@ public class ComposeActivity extends FragmentActivity {
 			@Override
 			public void afterTextChanged(Editable s) {				
 				int statusLength = etComposedTweet.getText().toString().length();
-				boolean enabled = (MAX_CHAR >= statusLength) & statusLength> 0; 
+				boolean enabled = (MAX_CHAR >= statusLength) & statusLength > 0; 
 				
 				//if the status has no text AND is more than max_char, then disable tweet else enable it.
 				menu.findItem(R.id.mi_tweet).setEnabled(enabled);	

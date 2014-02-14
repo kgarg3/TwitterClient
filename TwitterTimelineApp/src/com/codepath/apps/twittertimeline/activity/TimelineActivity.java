@@ -35,9 +35,7 @@ public class TimelineActivity extends FragmentActivity /*implements TabListener*
 	private final int REQUEST_CODE = 10;
 	public static final String STATUS = "Status";
 	public static final String USER = "User";
-	public static final String PROFILE_IMG = "profileImage";
-	public static final String PROFILE_NAME = "profileName";
-
+	
 	private static final String TAB_HOME_TIMELINE_TAG = "HomeTimelineFragment";
 	private static final String TAB_MENTIONS_TIMELINE_TAG = "MentionsTimelineFragment";
 
@@ -177,27 +175,9 @@ public class TimelineActivity extends FragmentActivity /*implements TabListener*
 		actionBar.selectTab(tabHome);
 	}
 
-//	@Override
-//	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-//		android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//
-//		if(tab.getTag().equals(TAB_HOME_TIMELINE_TAG)) {			
-//			transaction.replace(R.id.flTimelineActivityTweets, new HomeTimelineFragment());		
-//		}
-//		else if(tab.getTag().equals(TAB_MENTIONS_TIMELINE_TAG)){
-//			transaction.replace(R.id.flTimelineActivityTweets, new MentionsTimelineFragment());
-//		}
-//
-//		transaction.commit();
-//	}
-//
-//	@Override
-//	public void onTabUnselected(Tab tab, FragmentTransaction ft) { }
-//
-//	@Override
-//	public void onTabReselected(Tab tab, FragmentTransaction ft) { }
-
-
+	/**
+	 * Get the logged in user 
+	 */
 	private void getLoggedInUser() {
 		TwitterClientApp.getRestClient().getLoggedInUser(new JsonHttpResponseHandler() {
 			@Override
